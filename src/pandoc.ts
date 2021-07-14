@@ -45,7 +45,7 @@ export class Pandoc {
 
     for (const type of this.outputTypes) {
       const args: string[] = [];
-      args.push("-f", this.inputType, "-t", type.name);
+      args.push("-f", this.inputType, "-t", type.format);
       if (type.fname) {
         args.push("-o", type.fname);
       }
@@ -94,7 +94,7 @@ export class Pandoc {
 
     for (const type of this.outputTypes) {
       const args: string[] = [];
-      args.push("-f", this.inputType, "-t", type.name, fname);
+      args.push("-f", this.inputType, "-t", type.format, fname);
       if (type.fname) {
         args.push("-o", type.fname);
       }

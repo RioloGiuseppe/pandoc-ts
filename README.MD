@@ -56,6 +56,7 @@ To use corverter you have to configure the output format you need and create an 
 const outFormats: PandocOutFormat[] = [
   {
     name: String,
+    format: String,
     fname: String,
     outBin: Boolean,
     enc: String,
@@ -69,6 +70,7 @@ const pandocInstance = new Pandoc('format', outFormats);
 const outFormats = [
   {
     name: String,
+    format: String,
     fname: String,
     outBin: Boolean,
     enc: String,
@@ -80,11 +82,11 @@ const pandocInstance = new Pandoc('format', outFormats);
 
 Where:
 
-- **format**: Pandoc format name for input see [here](https://pandoc.org/MANUAL.html#general-options) for more details
-- **name**: Pandoc format name for output see [here](https://pandoc.org/MANUAL.html#general-options) for more details
+- **name**: friendly name for the output
+- **format**: Pandoc format name for input or output see [here](https://pandoc.org/MANUAL.html#general-options) for more details
 - **fname**: define the output file name for current format
 - **outBin**: if true the current format output will be returned in raw buffer format
-- **enc**: if _outBin_ is false and _fname_ is not defined set the string encoding for string text out
+- **enc**: if _outBin_ is false and _fname_ is not defined set the output content encoding. For more information see [here](https://nodejs.org/dist./v4.8.3/docs/doc/api/buffer.html#buffer_buffers_and_character_encodings)
 
 > **outFormats**: could also be single object rather than an array
 
@@ -142,8 +144,9 @@ The second saved in an output file "sample.html"
 import { Pandoc, PandocOutFormat } from "pandoc-ts";
 
 const outs: PandocOutFormat[] = [
-  { name: "gfm", outBin: false },
-  { name: "html", fname: "sample.html" },
+  { name: "markdown", name: "gfm", outBin: false },
+  { name: "markdownFile", name: "gfm", fname: "sample.md" },
+  { name: "html", name: "html", fname: "sample.html" },
 ];
 
 const pandocInstance = new Pandoc("docx", outs);
@@ -153,7 +156,8 @@ pandocInstance.convertFile("input.docx", (result, err) => {
     console.error(err);
   }
   if (result) {
-    console.log(result.gfm);
+    console.log(result.markdown);
+    console.log(result.markdownFile);
     console.log(result.html);
   }
 });
