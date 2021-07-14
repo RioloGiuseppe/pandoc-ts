@@ -1,4 +1,3 @@
-import { rejects } from "assert";
 import { spawn } from "child_process";
 import { PandocOutFormat } from "./input-format";
 import { PandocCallback, PandocData } from "./types";
