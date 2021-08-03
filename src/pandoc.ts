@@ -30,6 +30,7 @@ export class Pandoc {
   }
 
   public convert(inputText: string, callback: PandocCallback): void {
+    this.data = {};
     let outLength = 0;
     if (!inputText || typeof inputText !== "string") {
       throw "Invalid markup type: must be a string.";

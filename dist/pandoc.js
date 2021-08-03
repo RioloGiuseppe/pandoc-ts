@@ -24,6 +24,7 @@ class Pandoc {
         this.data = {};
     }
     convert(inputText, callback) {
+        this.data = {};
         let outLength = 0;
         if (!inputText || typeof inputText !== "string") {
             throw "Invalid markup type: must be a string.";
