@@ -79,6 +79,7 @@ export class Pandoc {
   }
 
   public convertFile(fname: string, callback: PandocCallback): void {
+    this.data = {};
     let outLength = 0;
 
     if (!fname || typeof fname !== "string") {

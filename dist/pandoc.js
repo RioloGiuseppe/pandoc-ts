@@ -69,6 +69,7 @@ class Pandoc {
         }
     }
     convertFile(fname, callback) {
+        this.data = {};
         let outLength = 0;
         if (!fname || typeof fname !== "string") {
             throw "Invalid filename: must be a string.";
