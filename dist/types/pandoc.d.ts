@@ -5,6 +5,7 @@ export declare class Pandoc {
     private inputType;
     private outputTypes;
     private outLength;
+    get outFormats(): PandocOutFormat[];
     constructor(inputMarkup: string, outputMarkups: PandocOutFormat | PandocOutFormat[]);
     convert(inputText: string, callback: PandocCallback): void;
     convertFile(fname: string, callback: PandocCallback): void;

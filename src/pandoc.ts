@@ -8,6 +8,10 @@ export class Pandoc {
   private outputTypes: PandocOutFormat[] = [];
   private outLength: number = 0;
 
+  public get outFormats(): PandocOutFormat[] {
+    return this.outputTypes;
+  }
+
   constructor(
     inputMarkup: string,
     outputMarkups: PandocOutFormat | PandocOutFormat[]

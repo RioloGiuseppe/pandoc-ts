@@ -23,6 +23,9 @@ class Pandoc {
         this.outLength = outputMarkups.length;
         this.data = {};
     }
+    get outFormats() {
+        return this.outputTypes;
+    }
     convert(inputText, callback) {
         this.data = {};
         let outLength = 0;
